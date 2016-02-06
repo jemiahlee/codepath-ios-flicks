@@ -68,10 +68,6 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.movieImage.setImageWithURL(tmdbURL)
         return cell
     }
-    
-    //func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-    //}
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let data = movieData {
