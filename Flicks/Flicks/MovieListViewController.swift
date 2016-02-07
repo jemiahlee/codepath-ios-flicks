@@ -22,6 +22,9 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBar.hidden = true
+        if let indexPath = movieTableView.indexPathForSelectedRow {
+            movieTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -75,8 +78,19 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         vc.movieData = self.movieData!["results"]![indexPath!.section] as! NSDictionary
     }
 
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = movieTableView.dequeueReusableCellWithIdentifier("com.codepath.movielisttablecell", forIndexPath: indexPath) as! MovieListTableViewCell
+        cell.selectionStyle = .None
+    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = movieTableView.dequeueReusableCellWithIdentifier("com.codepath.movielisttablecell", forIndexPath: indexPath) as! MovieListTableViewCell
+
+        cell.selectionStyle = .Default
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.redColor()
+        cell.selectedBackgroundView = backgroundView
+
         cell.movieTitle.text = movieData!["results"]![indexPath.section]!["title"] as? String
         cell.movieDescription.text = movieData!["results"]![indexPath.section]!["overview"] as? String
         
