@@ -64,3 +64,6 @@ Carthage/Build
 
 fastlane/report.xml
 fastlane/screenshots
+
+# Do not store Pods here either.
+Pods
