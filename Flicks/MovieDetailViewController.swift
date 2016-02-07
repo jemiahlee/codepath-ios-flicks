@@ -12,12 +12,37 @@ import UIKit
 class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var moviePosterImageView: UIImageView!
+    @IBOutlet weak var movieDetailsScrollView: UIScrollView!
+    
+    @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var movieReleaseDate: UILabel!
+    @IBOutlet weak var movieDescription: UILabel!
+    @IBOutlet weak var detailsView: UIView!
+    @IBOutlet weak var detailsBackgroundView: UIView!
+    
     internal var moviePosterURL: NSURL!
+    internal var movieData: NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         moviePosterImageView.contentMode = UIViewContentMode.ScaleAspectFit
         moviePosterImageView.setImageWithURL(moviePosterURL)
+       
+        
+        detailsBackgroundView.layer.cornerRadius = 11
+        detailsBackgroundView.layer.masksToBounds = true
+        movieDetailsScrollView.layer.cornerRadius = 11
+        movieDetailsScrollView.layer.masksToBounds = true
+     
+        movieReleaseDate.text = movieData["release_date"] as? String
+        movieDescription.text = movieData["overview"] as? String
+        movieTitle.text = movieData["title"] as? String
+        
+        movieDescription.sizeToFit()
+        detailsView.sizeToFit()
+        
+        let contentWidth = movieDetailsScrollView.bounds.width
+        movieDetailsScrollView.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(detailsView.frame) + 100)
     }
 
     override func didReceiveMemoryWarning() {

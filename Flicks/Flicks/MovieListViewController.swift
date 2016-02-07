@@ -53,12 +53,15 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         let vc = segue.destinationViewController as! MovieDetailViewController
         let indexPath = movieTableView.indexPathForCell(sender as! UITableViewCell)
         vc.moviePosterURL = getHighResImageAtIndex(indexPath!.section)
+        vc.movieData = self.movieData!["results"]![indexPath!.section] as! NSDictionary
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = movieTableView.dequeueReusableCellWithIdentifier("com.codepath.movielisttablecell", forIndexPath: indexPath) as! MovieListTableViewCell
         cell.movieTitle.text = movieData!["results"]![indexPath.section]!["title"] as? String
         cell.movieDescription.text = movieData!["results"]![indexPath.section]!["overview"] as? String
+        
+        cell.movieDescription.sizeToFit()
         let tmdbURL = getThumbnailAtIndex(indexPath.section)
         cell.movieImage.setImageWithURL(tmdbURL)
         return cell
