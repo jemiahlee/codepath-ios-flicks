@@ -40,8 +40,17 @@ class MovieDetailViewController: UIViewController {
 
         let url_request = NSURLRequest(URL: moviePosterURL)
         moviePosterImageView.setImageWithURLRequest(url_request, placeholderImage: nil, success: { (request:NSURLRequest,response:NSHTTPURLResponse?, image:UIImage) -> Void in
-            self.moviePosterImageView.image = image
+
             MBProgressHUD.hideHUDForView(self.view, animated: true)
+            if response != nil {
+                self.moviePosterImageView.alpha = 0.0
+                self.moviePosterImageView.image = image
+                UIView.animateWithDuration(1.0, animations: { () -> Void in
+                    self.moviePosterImageView.alpha = 1.0
+                })
+            } else {
+                self.moviePosterImageView.image = image
+            }
         }, failure: { (request:NSURLRequest,response:NSHTTPURLResponse?, error:NSError) -> Void in
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             self.errorView.hidden = false

@@ -83,6 +83,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="abS-jO-xia"/>
                     <connections>
+                        <outlet property="errorView" destination="nNr-vX-Cfa" id="uhy-MC-eZe"/>
                         <outlet property="movieTableView" destination="ETg-s6-4HG" id="tLU-Ma-T6e"/>
                     </connections>
                 </viewController>
@@ -99,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ukT-Go-Ziu">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="E2K-X9-ZMe">

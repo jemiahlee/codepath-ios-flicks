@@ -18,7 +18,8 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     let refreshControl = UIRefreshControl()
 
     @IBOutlet weak var movieTableView: UITableView!
-
+    @IBOutlet weak var errorView: UIView!
+    
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBar.hidden = true
     }
@@ -30,6 +31,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        errorView.hidden = true
         movieTableView.delegate = self
         movieTableView.dataSource = self
         
@@ -78,8 +80,18 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.movieDescription.text = movieData!["results"]![indexPath.section]!["overview"] as? String
         
         cell.movieDescription.sizeToFit()
-        let tmdbURL = getThumbnailAtIndex(indexPath.section)
-        cell.movieImage.setImageWithURL(tmdbURL)
+        let tmdbURLRequest = NSURLRequest(URL: self.getLowResImageAtIndex(indexPath.section))
+        
+        cell.movieImage.setImageWithURLRequest(tmdbURLRequest, placeholderImage: nil,
+            success: { (request:NSURLRequest,response:NSHTTPURLResponse?, image:UIImage) -> Void in
+                cell.movieImage.alpha = 0.0
+                cell.movieImage.image = image
+                UIView.animateWithDuration(1.0, animations: { () -> Void in
+                    cell.movieImage.alpha = 1.0
+                })
+            }, failure: { (request, response,error) -> Void in
+            }
+        )
         return cell
     }
 
