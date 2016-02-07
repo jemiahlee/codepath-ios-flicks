@@ -11,7 +11,7 @@ The following **required** functionality is completed:
 - [x] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
 - [x] User can view movie details by tapping on a cell.
 - [x] User sees loading state while waiting for the API.
-- [ ] User sees an error message when there is a network error.
+- [x] User sees an error message when there is a network error.
 - [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
@@ -38,11 +38,13 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Determining how to size a reasonable height for the UIScrollView for the
+movie details was not clear at all and I spent quite a while trying to
+make that work.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2016 Jeremiah Lee
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
