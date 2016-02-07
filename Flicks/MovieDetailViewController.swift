@@ -35,7 +35,7 @@ class MovieDetailViewController: UIViewController {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         moviePosterImageView.contentMode = UIViewContentMode.ScaleAspectFit
-        // moviePosterImageView.setImageWithURL(moviePosterURL)
+
         let url_request = NSURLRequest(URL: moviePosterURL)
         moviePosterImageView.setImageWithURLRequest(url_request, placeholderImage: nil, success: { (request:NSURLRequest,response:NSHTTPURLResponse?, image:UIImage) -> Void in
             self.moviePosterImageView.image = image
@@ -59,23 +59,10 @@ class MovieDetailViewController: UIViewController {
         
         let contentWidth = movieDetailsScrollView.bounds.width
         movieDetailsScrollView.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(detailsView.bounds) + 10)
-        // movieDetailsScrollView.contentSize = CGSizeMake(contentWidth, CGRectGetHeight(detailsView.frame) + 30)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

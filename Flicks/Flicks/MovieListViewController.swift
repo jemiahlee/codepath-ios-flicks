@@ -18,6 +18,15 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     let refreshControl = UIRefreshControl()
 
     @IBOutlet weak var movieTableView: UITableView!
+
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBar.hidden = true
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        navigationController?.navigationBar.hidden = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
