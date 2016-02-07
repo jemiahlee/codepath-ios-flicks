@@ -7,6 +7,7 @@
 //
 
 import AFNetworking
+import MBProgressHUD
 import UIKit
 
 
@@ -19,7 +20,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var movieTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         movieTableView.delegate = self
         movieTableView.dataSource = self
         refreshControl.addTarget(self, action: "loadData:", forControlEvents: UIControlEvents.ValueChanged)
@@ -35,13 +36,18 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
             delegate:nil,
             delegateQueue:NSOperationQueue.mainQueue()
         )
+        
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
+                            sleep(1)
                             self.movieData = responseDictionary
                             self.movieTableView.reloadData()
+                            MBProgressHUD.hideHUDForView(self.view, animated: true)
                             refreshControl.endRefreshing()
                     }
                 }
