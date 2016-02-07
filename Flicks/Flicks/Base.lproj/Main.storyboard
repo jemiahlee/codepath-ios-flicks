@@ -135,6 +135,21 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.91713023560209428" green="0.91713023560209428" blue="0.91713023560209428" alpha="0.5" colorSpace="calibratedRGB"/>
                             </view>
+                            <view contentMode="scaleToFill" id="Gae-67-qpM">
+                                <rect key="frame" x="0.0" y="64" width="320" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U9z-60-p7g">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -142,6 +157,7 @@
                     <connections>
                         <outlet property="detailsBackgroundView" destination="E2K-X9-ZMe" id="Aac-M7-BT4"/>
                         <outlet property="detailsView" destination="34u-DD-7tV" id="jxg-H0-5NX"/>
+                        <outlet property="errorView" destination="Gae-67-qpM" id="B2H-M7-m0H"/>
                         <outlet property="movieDescription" destination="P2m-g4-uwC" id="IyI-sF-Fet"/>
                         <outlet property="movieDetailsScrollView" destination="JuQ-s2-6iD" id="lPr-NM-PUn"/>
                         <outlet property="moviePosterImageView" destination="ukT-Go-Ziu" id="NYe-WV-GvT"/>

@@ -22,7 +22,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(animated: Bool) {
         navigationController?.navigationBar.hidden = true
     }
-
+    
     override func viewWillDisappear(animated: Bool) {
         navigationController?.navigationBar.hidden = false
     }
@@ -32,6 +32,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         movieTableView.delegate = self
         movieTableView.dataSource = self
+        
         refreshControl.addTarget(self, action: "loadData:", forControlEvents: UIControlEvents.ValueChanged)
         movieTableView.insertSubview(refreshControl, atIndex: 0)
         loadData(self.refreshControl)

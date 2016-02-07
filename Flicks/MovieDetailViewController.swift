@@ -25,9 +25,11 @@ class MovieDetailViewController: UIViewController {
     internal var movieData: NSDictionary!
     internal let dateParser = NSDateFormatter()
     internal let dateFormatter = NSDateFormatter()
+    @IBOutlet weak var errorView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorView.hidden = true
 
         dateParser.dateFormat = "yyyy-MM-dd"
         dateFormatter.dateFormat = "MMM d, yyyy"
@@ -42,6 +44,7 @@ class MovieDetailViewController: UIViewController {
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }, failure: { (request:NSURLRequest,response:NSHTTPURLResponse?, error:NSError) -> Void in
             MBProgressHUD.hideHUDForView(self.view, animated: true)
+            self.errorView.hidden = false
         })
         
         detailsBackgroundView.layer.cornerRadius = 11
