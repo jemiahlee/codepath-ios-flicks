@@ -70,7 +70,8 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let vc = segue.destinationViewController as! MovieDetailViewController
         let indexPath = movieTableView.indexPathForCell(sender as! UITableViewCell)
-        vc.moviePosterURL = getHighResImageAtIndex(indexPath!.section)
+        vc.moviePosterHighResURL = getHighResImageAtIndex(indexPath!.section)
+        vc.moviePosterLowResURL = getLowResImageAtIndex(indexPath!.section)
         vc.movieData = self.movieData!["results"]![indexPath!.section] as! NSDictionary
     }
 
@@ -122,7 +123,7 @@ class MovieListViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
 
-    func getThumbnailAtIndex(index: Int) -> NSURL {
+    func getLowResImageAtIndex(index: Int) -> NSURL {
         return makeTMDBUrl(index, size: "w342")
     }
 
